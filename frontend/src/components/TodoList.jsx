@@ -181,10 +181,10 @@ const TodoList = memo((props) => {
     });
   };
   // タスク追加
-  const addItem = (value) => {
+  const addItem = () => {
     if (inRef.value.trim() === "") return;
     props.setTodoList((todoList) => {
-      let data = {
+      let item = {
         id: todoList.length,
         text: inRef.value,
         checked: false,
@@ -192,13 +192,11 @@ const TodoList = memo((props) => {
         appearAnim: false,
       };
       if (todoList.length === 0) {
-        data.checked = true;
+        item.checked = true;
         props.setCheckedIndex(0);
       }
-      const copy = [...todoList];
-      copy.push(data);
       inRef.value = "";
-      return copy;
+      return [...todoList, item];
     });
   };
 
