@@ -114,7 +114,7 @@
 							<outputDirectory>${basedir}/target/classes/static/</outputDirectory>
 							<resources>
 								<resource>
-									<directory>${basedir}/../copomo-react/build</directory>
+									<directory>${basedir}/../frontend/build</directory>
 								</resource>
 							</resources>
 						</configuration>
