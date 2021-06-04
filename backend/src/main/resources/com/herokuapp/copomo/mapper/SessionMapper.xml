@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.herokuapp.copomo.mapper.SessionMapper">
+
+    <select id="count" resultType="int">
+        SELECT COUNT(*) FROM sessions;
+    </select>
+
+    <select id="findAll" resultType="Session">
+        SELECT sessions.id, user_id, user_name, task_name, session_type, timer_on, remaining, sessions.updated_at, image_url FROM sessions
+        LEFT OUTER JOIN users
+        ON sessions.user_id = users.id
+        ORDER BY sessions.id ASC
+    </select>
+
+    <select id="findUserNameBySessionId" resultType="String">
+        SELECT user_name FROM sessions
+        WHERE id = #{id}
+    </select>
+
+    <insert id="create" parameterType="Session">
+        INSERT INTO sessions(
+            user_id, user_name, session_type, task_name, remaining, timer_on, created_at, updated_at)
+            VALUES(
+                #{userId}, #{userName}, #{sessionType}, #{taskName}, #{remaining}, #{timerOn}, #{updatedAt}, #{updatedAt}
+            )
+    </insert>
+
+    <update id="update" parameterType="Session">
+        UPDATE sessions SET
+        user_name = #{userName},
+        task_name = #{taskName},
+        session_type = #{sessionType},
+        remaining = #{remaining},
+        timer_on = #{timerOn},
+        updated_at = #{updatedAt}
+        WHERE id = #{id}
+        AND created_at = #{createdAt}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM sessions
+        WHERE id = #{id}
+        AND created_at = #{createdAt}
+    </delete>
+
+    <delete id="deleteOld">
+        DELETE FROM sessions
+        WHERE (SELECT updated_at - interval '1 hour' FROM sessions ORDER BY updated_at DESC LIMIT 1) > updated_at
+    </delete>
+
+</mapper>

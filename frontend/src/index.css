@@ -1,0 +1,14 @@
+* {
+  /* ボタンをクリックしたときの枠線を消す */
+  outline: none !important;
+}
+
+body {
+  /* フォント */
+  font-family: Roboto, sans-serif;
+  margin: 0 0;
+  /* 背景色 */
+  background-color: #f8f9fa !important;
+  /* 文字の折り返し */
+  word-wrap: break-word;
+}

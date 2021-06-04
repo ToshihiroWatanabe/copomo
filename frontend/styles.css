@@ -1,0 +1,5 @@
+/* TailWind CSSのビルド用 */
+/*  NODE_ENV=production npx tailwindcss build styles.css -o src/tailwind.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

@@ -1,0 +1,29 @@
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### VS Code ###
+.vscode/
+
+### Spring Boot ###
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+/backend/target/
+/backend/*.sql
+
+### React ###
+
+# dependencies
+/frontend/node_modules
+
+# production
+/frontend/build
+
+# misc
+/frontend/.env*

@@ -1,0 +1,25 @@
+main {
+  margin-top: 4.2rem;
+}
+
+
+@media screen and (min-width: 768px) {
+  main {
+    display: flex;
+  }
+
+  .leftColumn {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    max-width: 768px;
+    justify-content: flex-start;
+  }
+
+  .rightColumn {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    max-width: 768px;
+  }
+}

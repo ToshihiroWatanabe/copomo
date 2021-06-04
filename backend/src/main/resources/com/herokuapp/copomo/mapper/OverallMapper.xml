@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.herokuapp.copomo.mapper.OverallMapper">
+
+    <select id="findAll" resultType="Overall">
+        SELECT * FROM overall LIMIT 1
+    </select>
+
+    <update id="update" parameterType="Overall">
+        UPDATE overall SET
+        pomodoro_count = #{pomodoroCount},
+        time_spent = #{timeSpent},
+        previous_day_pomodoro_count = #{previousDayPomodoroCount},
+        previous_day_time_spent = #{previousDayTimeSpent},
+        today_pomodoro_count = #{todayPomodoroCount},
+        today_time_spent = #{todayTimeSpent},
+        event_pomodoro_count = #{eventPomodoroCount},
+        event_time_spent = #{eventTimeSpent},
+        updated_at = #{updatedAt}
+    </update>
+</mapper>
