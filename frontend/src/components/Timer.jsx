@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(1.5),
     padding: theme.spacing(3),
     paddingBottom: theme.spacing(4),
+    minHeight: "13rem",
     maxWidth: "768px",
     textAlign: "center",
     [theme.breakpoints.down("xs")]: {
