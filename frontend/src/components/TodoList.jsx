@@ -182,8 +182,8 @@ const TodoList = memo((props) => {
   };
   // タスク追加
   const addItem = (value) => {
+    if (inRef.value.trim() === "") return;
     props.setTodoList((todoList) => {
-      if (!inRef.value.trim()) return;
       let data = {
         id: todoList.length,
         text: inRef.value,
