@@ -461,18 +461,14 @@ const Timer = memo((props) => {
    */
   const incTimeSpent = (count) => {
     if (props.timerOn && props.sessionType === "Work") {
-      const copyLocal = localStorage.getItem("todoList")
-        ? JSON.parse(localStorage.getItem("todoList"))
-        : [];
-      let copyLocalSpent = [];
-      copyLocal.forEach((e) => {
-        if (e.checked === true) {
-          e.timeSpent += COUNTS_EVERY_SECOND * count;
-        }
-        copyLocalSpent.push(e);
+      props.setTodoList((todoList) => {
+        todoList.forEach((e) => {
+          if (e.checked === true) {
+            e.timeSpent += COUNTS_EVERY_SECOND * count;
+          }
+        });
+        return [...todoList];
       });
-      props.setTodoList(copyLocalSpent);
-      localStorage.setItem("todoList", JSON.stringify(copyLocalSpent));
     }
   };
 

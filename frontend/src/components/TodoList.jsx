@@ -158,33 +158,31 @@ const TodoList = memo((props) => {
   // タスク削除
   const deleteItem = (value) => {
     props.setTodoList((todoList) => {
-      const copy = [...todoList];
-      // 何番目か取得
-      let index = copy.indexOf(value);
-      if (index !== -1) {
-        if (value.checked === true) {
-          props.setCheckedIndex(-1);
-        }
-        copy.splice(index, 1);
-        copy.forEach((e) => {
-          if (e.id >= index) {
-            e.id -= 1;
-          }
-          props.setCheckedIndex((checkedIndex) => {
-            if (checkedIndex >= index) {
-              return (checkedIndex -= 1);
-            }
-          });
-        });
-        return copy;
+      let newTodoList = todoList.filter((element, index) => {
+        return index !== value.id;
+      });
+      // タスクIDを再設定
+      for (let i = 0; i < newTodoList.length; i++) {
+        newTodoList[i].id = i;
       }
+      // チェック位置を変更
+      props.setCheckedIndex((checkedIndex) => {
+        if (value.checked === true) {
+          return -1;
+        }
+        if (checkedIndex >= value.id) {
+          return checkedIndex--;
+        }
+      });
+      return newTodoList;
     });
   };
+
   // タスク追加
-  const addItem = (value) => {
+  const addItem = () => {
+    if (inRef.value.trim() === "") return;
     props.setTodoList((todoList) => {
-      if (!inRef.value.trim()) return;
-      let data = {
+      let item = {
         id: todoList.length,
         text: inRef.value,
         checked: false,
@@ -192,13 +190,11 @@ const TodoList = memo((props) => {
         appearAnim: false,
       };
       if (todoList.length === 0) {
-        data.checked = true;
+        item.checked = true;
         props.setCheckedIndex(0);
       }
-      const copy = [...todoList];
-      copy.push(data);
       inRef.value = "";
-      return copy;
+      return [...todoList, item];
     });
   };
 
