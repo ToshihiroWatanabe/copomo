@@ -16,9 +16,9 @@ ReactDOM.render(
     <ErrorBoundary>
       <MuiThemeProvider theme={theme}>
         <CssBaseline>
-          <React.StrictMode>
-            <App />
-          </React.StrictMode>
+          {/* <React.StrictMode> */}
+          <App />
+          {/* </React.StrictMode> */}
         </CssBaseline>
       </MuiThemeProvider>
     </ErrorBoundary>
