@@ -4,7 +4,7 @@
 
 ## 概要 Overview
 
-25分作業と5分休憩を繰り返す時間管理術「ポモドーロ・テクニック」を実践するためのタイマーに、Todoリストと、他のユーザーのタイマーの状況を表示する機能が備わったアプリです。  
+25分作業と5分休憩を繰り返す時間管理術「ポモドーロ・テクニック」を実践するためのタイマーに、Todoリストと、他のユーザーのタイマーの状況を表示する機能を備えたWebアプリケーションです。  
 
 バックエンドはSpring Boot、フロントエンドはReactで制作しています。
 
@@ -16,6 +16,7 @@
 
 - Spring Boot 2.4.5
 - Java 11
+- PostgreSQL
 - Maven
 - React 17.0.2
 - npm
@@ -26,21 +27,38 @@
 
 ```git clone https://github.com/ToshihiroWatanabe/copomo.git```
 
+クローンされたリポジトリのディレクトリに移動します。
+
+```cd copomo```
+
+### バックエンド
+
+PostgreSQLでデータベースを作成し、copomo\backend\src\main\resourcesにあるschema.sqlとdata.sqlを実行して、テーブル作成と初期データ挿入を行ってください。
+
+以下の環境変数の値を設定してください。
+
+キー|説明
+---|---
+POSTGRES_URL|PostgreSQLのデータベースURL
+POSTGRES_USER|PostgreSQLのデータベースにログインするユーザー名
+POSTGRES_PASS|PostgreSQLのデータベースにログインするユーザーのパスワード
+GOOGLE_CLIENT_ID|Google OAuth2.0 のクライアントID
+GOOGLE_CLIENT_SECRET|Google OAuth2.0 のクライアントシークレット
+
+
 Spring Bootプロジェクトのディレクトリに移動します。
 
-```cd copomo\backend```
-
-必要なモジュールをインストールします。
-
-```mvn install```
+```cd backend```
 
 Spring Bootアプリケーションを起動します。
 
 ```mvn spring-boot:run```
 
+### フロントエンド
+
 Reactプロジェクトのディレクトリに移動します。
 
-```cd ..\frontend```
+```cd frontend```
 
 必要なモジュールをインストールします。
 
@@ -49,6 +67,26 @@ Reactプロジェクトのディレクトリに移動します。
 Reactアプリケーションを起動します。
 
 ```npm start```
+
+### バックエンドにフロントエンドをまとめてビルドする場合
+
+Reactプロジェクトのディレクトリに移動します。
+
+```cd frontend```
+
+Reactプロジェクトをビルドします。
+
+```npm run build```
+
+Spring Bootプロジェクトのディレクトリに移動します。
+
+```cd ..\backend```
+
+Spring Bootプロジェクトをクリーン、パッケージします。
+
+```mvn clean package```
+
+これでcopomo\backend\targetにcopomo-1.0.0.jarファイルが生成されます。
 
 ## 作者 Author
 
