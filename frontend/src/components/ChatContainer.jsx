@@ -413,8 +413,8 @@ const ChatContainer = memo((props) => {
                   sessionType: sessionType,
                   taskName:
                     todoList.length > 0 &&
-                    props.checkedIndex >= 0 &&
-                    todoList.length > props.checkedIndex
+                    checkedIndex >= 0 &&
+                    todoList.length > checkedIndex
                       ? todoList[checkedIndex].text
                       : "",
                   remaining: timeLeft,
