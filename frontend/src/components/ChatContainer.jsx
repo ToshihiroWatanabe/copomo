@@ -111,6 +111,14 @@ const ChatContainer = memo((props) => {
   // ???
   const [showHappyTomato, setShowHappyTomato] = useState(false);
 
+  // ページが移動されるかリロードされるとき
+  window.addEventListener("beforeunload", (event) => {
+    if (!props.isEntered && enterFlag) {
+      enterFlag = false;
+      exitTheRoom();
+    }
+  });
+
   // 最初だけ実行
   useEffect(() => {
     if (props.name !== "") {
