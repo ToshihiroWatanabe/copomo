@@ -76,6 +76,12 @@ Reactプロジェクトのディレクトリに移動します。
 
 ```npm install```
 
+以下の環境変数の値を設定してください。
+
+キー|説明
+---|---
+REACT_APP_CLIENT_ID|Google OAuth2.0 のクライアントID
+
 Reactアプリケーションを起動します。
 
 ```npm start```
