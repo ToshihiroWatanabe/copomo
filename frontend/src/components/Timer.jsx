@@ -181,9 +181,9 @@ const Timer = memo((props) => {
         if (props.timerOn) {
           // 現在時刻を代入
           const dateNow = Date.now();
+          let count = 0;
           props.setTimeLeft((timeLeft) => {
             // 前回のカウントから1.5秒以上経っていると一度にカウントする量が増える
-            let count = 0;
             for (
               let i = 0;
               i <= dateNow - lastCountTime - COUNT_INTERVAL / 2;
@@ -194,15 +194,11 @@ const Timer = memo((props) => {
             if (count > timeLeft * COUNTS_EVERY_SECOND) {
               count = timeLeft * COUNTS_EVERY_SECOND;
             }
-            // 2連続で実行されるので遅延を入れた 2021/05/28
-            // たまにカウントされないことがあるため、遅延を増やした 2021/06/09
-            clearTimeout(incTimeSpentTimeout);
-            incTimeSpentTimeout = setTimeout(() => {
-              incTimeSpent(count);
-              incTodayTimeSpent(count);
-            }, 10);
             return timeLeft - COUNTS_EVERY_SECOND * count;
           });
+          // 経過時間のカウント
+          incTimeSpent(count);
+          incTodayTimeSpent(count);
 
           // 設定によってチクタク音を再生
           if (props.settings.tick) {
