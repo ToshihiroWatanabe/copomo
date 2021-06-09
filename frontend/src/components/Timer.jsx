@@ -195,11 +195,12 @@ const Timer = memo((props) => {
               count = timeLeft * COUNTS_EVERY_SECOND;
             }
             // 2連続で実行されるので遅延を入れた 2021/05/28
+            // たまにカウントされないことがあるため、遅延を増やした 2021/06/09
             clearTimeout(incTimeSpentTimeout);
             incTimeSpentTimeout = setTimeout(() => {
               incTimeSpent(count);
               incTodayTimeSpent(count);
-            }, 1);
+            }, 10);
             return timeLeft - COUNTS_EVERY_SECOND * count;
           });
 
