@@ -98,6 +98,7 @@ const FormDialog = memo((props) => {
             fullWidth
             defaultValue={props.defaultValue}
             inputRef={(ref) => (inRef = ref)}
+            inputProps={{ maxLength: 45 }}
             onKeyDown={handleKeyDown}
             onKeyUp={handleKeyUp}
           />
