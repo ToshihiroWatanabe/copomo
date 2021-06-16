@@ -9,12 +9,15 @@ import {
   ListItemSecondaryAction,
   IconButton,
   TextField,
+  Typography,
 } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import { makeStyles } from "@material-ui/core";
 // 日付時刻を扱う
 import { Duration } from "luxon";
 import TaskMenu from "./TaskMenu";
+
+const NUMBER_OF_TASK_MAX = 32;
 
 /** Material-UIのスタイル */
 const useStyles = makeStyles((theme) => ({
@@ -255,7 +258,7 @@ const TodoList = memo((props) => {
             );
           })}
           {(() => {
-            if (props.todoList.length < 16) {
+            if (props.todoList.length < NUMBER_OF_TASK_MAX) {
               return (
                 <>
                   <ListItem key={"input"} button disableRipple>
@@ -264,7 +267,7 @@ const TodoList = memo((props) => {
                       label="タスクを追加"
                       inputRef={(ref) => (inRef = ref)}
                       onKeyPress={handleKeyPress}
-                      inputProps={{ maxLength: 50 }}
+                      inputProps={{ maxLength: 45 }}
                     />
                     <ListItemSecondaryAction>
                       <IconButton
@@ -276,6 +279,14 @@ const TodoList = memo((props) => {
                       </IconButton>
                     </ListItemSecondaryAction>
                   </ListItem>
+                </>
+              );
+            } else {
+              return (
+                <>
+                  <Typography variant="caption">
+                    タスク数の上限に達しました
+                  </Typography>
                 </>
               );
             }
