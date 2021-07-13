@@ -14,16 +14,16 @@
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-/backend/target/
-/backend/*.sql
+/springboot/target/
+/springboot/*.sql
 
 ### React ###
 
 # dependencies
-/frontend/node_modules
+/react/node_modules
 
 # production
-/frontend/build
+/react/build
 
 # misc
-/frontend/.env*
+.env.local
