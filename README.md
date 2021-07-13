@@ -25,10 +25,10 @@
 
 ## Requirement 動作環境
 
-- Java 11
-- Maven
-- PostgreSQL
-- npm
+- Java 11.0.10
+- Maven 3.8.1
+- PostgreSQL 12.6
+- npm 7.16.0
 
 ## Installing & Run インストールと起動手順
 
