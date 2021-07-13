@@ -1,1 +1,1 @@
-# CoPomo - React
+# copomo/react

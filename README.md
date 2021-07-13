@@ -2,17 +2,17 @@
 
 ![copomo-ogp](https://user-images.githubusercontent.com/79039863/120760903-9a7e7880-c54f-11eb-8741-f564a973963a.png)
 
-## 概要 Overview
+## Overview 概要
 
-25分作業と5分休憩を繰り返す時間管理術「ポモドーロ・テクニック」を実践するためのタイマーに、Todoリストと、他のユーザーのタイマーの状況を表示する機能を備えたWebアプリケーションです。  
+25分作業と5分休憩を繰り返す時間管理術「ポモドーロ・テクニック」を実践するためのタイマーに、Todoリストと、他のユーザーのタイマーの状況を表示する機能を備えたWebアプリケーションです。
 
 バックエンドはSpring Boot、フロントエンドはReactで制作しています。
 
-## デモ Demo
+## Demo デモ
 
 ![copomo-demo](https://user-images.githubusercontent.com/79039863/120760754-7327ab80-c54f-11eb-8bbb-a4037974e0f8.gif)
 
-## 機能 Features
+## Features 機能
 
 - **オフライン対応** - PWA(プログレッシブウェブアプリ)なので、タイマーやTodoリストはオフラインで利用できます。
 - **プッシュ通知** - タイマーの完了時にブラウザのプッシュ通知を表示できます。
@@ -22,18 +22,15 @@
 - **YouTube動画をBGMにする** - YouTubeの動画のURLを作業用・休憩用BGMとして設定すると、タイマーが作動しているときに動画の音声が再生されます。
 - **クリップボードにコピー** - Todoリストをクリップボードにコピーできます。各タスクの作業時間と、合計時間も出力されます。
 - **Googleアカウントでログイン** - OAuth2.0を利用して、Googleアカウントでログインできます。
-- **古いセッションの自動削除** - 新しくユーザーが入室したときに、一定時間更新されていないセッションがデータベースのテーブルから削除されます。
 
-## 動作環境 Requirement
+## Requirement 動作環境
 
-- Spring Boot 2.4.5
 - Java 11
-- PostgreSQL
 - Maven
-- React 17.0.2
+- PostgreSQL
 - npm
 
-## インストールと起動手順 Installing & Run
+## Installing & Run インストールと起動手順
 
 リポジトリをクローンします。
 
@@ -45,22 +42,23 @@
 
 ### バックエンド
 
-PostgreSQLでデータベースを作成し、copomo\backend\src\main\resourcesにあるschema.sqlとdata.sqlを実行して、テーブル作成と初期データ挿入を行ってください。
+PostgreSQLでデータベースを作成し、[copomo/springboot/src/main/resources](/springboot/src/main/resources)にあるschema.sqlとdata.sqlを実行して、テーブル作成と初期データ挿入を行ってください。
 
 以下の環境変数の値を設定してください。
 
 キー|説明
 ---|---
-POSTGRES_URL|PostgreSQLのデータベースURL
-POSTGRES_USER|PostgreSQLのデータベースにログインするユーザー名
-POSTGRES_PASS|PostgreSQLのデータベースにログインするユーザーのパスワード
-GOOGLE_CLIENT_ID|Google OAuth2.0 のクライアントID
-GOOGLE_CLIENT_SECRET|Google OAuth2.0 のクライアントシークレット
-
+POSTGRES_URL|jdbc:postgresql://**ホスト名**:**ポート番号**/**データベース名**
+POSTGRES_USER|データベースにログインするユーザー名
+POSTGRES_PASS|データベースにログインするユーザーのパスワード
 
 Spring Bootプロジェクトのディレクトリに移動します。
 
-```cd backend```
+```cd springboot```
+
+Mavenで依存関係をインストールします。
+
+```mvn install```
 
 Spring Bootアプリケーションを起動します。
 
@@ -70,13 +68,13 @@ Spring Bootアプリケーションを起動します。
 
 Reactプロジェクトのディレクトリに移動します。
 
-```cd frontend```
+```cd react```
 
 必要なモジュールをインストールします。
 
 ```npm install```
 
-以下の環境変数の値を設定してください。
+ログイン機能を使う場合は、copomo\react配下に.envファイルを作成し、以下の環境変数の値を設定してください。
 
 キー|説明
 ---|---
@@ -90,7 +88,7 @@ Reactアプリケーションを起動します。
 
 Reactプロジェクトのディレクトリに移動します。
 
-```cd frontend```
+```cd react```
 
 Reactプロジェクトをビルドします。
 
@@ -98,18 +96,18 @@ Reactプロジェクトをビルドします。
 
 Spring Bootプロジェクトのディレクトリに移動します。
 
-```cd ..\backend```
+```cd ..\springboot```
 
 Spring Bootプロジェクトをクリーン、パッケージします。
 
 ```mvn clean package```
 
-これでcopomo\backend\targetにcopomo-1.0.0.jarファイルが生成されます。
+これでcopomo\springboot\targetにcopomo-1.0.0.jarファイルが生成されます。
 
-## 作者 Author
+## Author 作者
 
 ワタナベトシヒロ
 
-## ライセンス License
+## License ライセンス
 
 This project is licensed under the MIT License.

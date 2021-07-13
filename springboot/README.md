@@ -1,2 +1,2 @@
-# CoPomo - Spring Boot
+# copomo/springboot
 
