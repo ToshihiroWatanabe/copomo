@@ -2,17 +2,17 @@
 
 ![copomo-ogp](https://user-images.githubusercontent.com/79039863/120760903-9a7e7880-c54f-11eb-8741-f564a973963a.png)
 
-## Overview 概要
+## 概要
 
 25分作業と5分休憩を繰り返す時間管理術「ポモドーロ・テクニック」を実践するためのタイマーに、Todoリストと、他のユーザーのタイマーの状況を表示する機能を備えたWebアプリケーションです。
 
 バックエンドはSpring Boot、フロントエンドはReactで制作しています。
 
-## Demo デモ
+## デモ
 
 ![copomo-demo](https://user-images.githubusercontent.com/79039863/120760754-7327ab80-c54f-11eb-8bbb-a4037974e0f8.gif)
 
-## Features 機能
+## 機能
 
 - **オフライン対応** - PWA(プログレッシブウェブアプリ)なので、タイマーやTodoリストはオフラインで利用できます。
 - **プッシュ通知** - タイマーの完了時にブラウザのプッシュ通知を表示できます。
@@ -23,14 +23,28 @@
 - **クリップボードにコピー** - Todoリストをクリップボードにコピーできます。各タスクの作業時間と、合計時間も出力されます。
 - **Googleアカウントでログイン** - OAuth2.0を利用して、Googleアカウントでログインできます。
 
-## Requirement 動作環境
+### 特別な演出
+
+ルームに入室した後、1日の全ユーザーの累計ポモドーロ数が100を超えると**特別な演出**が発生します！<br/>
+JavaScriptのコードをいじるか、SQLでデータベースの値をいじると再現できるかも...？
+
+## 使用技術
+
+- React
+- Material-UI
+- Spring Boot
+- WebSocket
+- MyBatis
+- PostgreSQL
+
+## 動作環境
 
 - Java 11.0.10
 - Maven 3.8.1
 - PostgreSQL 12.6
 - npm 7.16.0
 
-## Installing & Run インストールと起動手順
+## インストールと起動手順
 
 リポジトリをクローンします。
 
@@ -104,10 +118,10 @@ Spring Bootプロジェクトをクリーン、パッケージします。
 
 これでcopomo\springboot\targetにcopomo-1.0.0.jarファイルが生成されます。
 
-## Author 作者
+## 作者
 
 ワタナベトシヒロ
 
-## License ライセンス
+## ライセンス
 
 This project is licensed under the MIT License.
