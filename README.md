@@ -35,6 +35,7 @@ JavaScriptのコードをいじるか、SQLでデータベースの値をいじ�
 - Spring Boot
 - MyBatis
 - PostgreSQL
+- JUnit
 
 ## 動作環境
 
