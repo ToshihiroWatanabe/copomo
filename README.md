@@ -33,7 +33,6 @@ JavaScriptのコードをいじるか、SQLでデータベースの値をいじ�
 - React
 - Material-UI
 - Spring Boot
-- WebSocket
 - MyBatis
 - PostgreSQL
 
